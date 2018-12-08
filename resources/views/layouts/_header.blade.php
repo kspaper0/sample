@@ -5,14 +5,14 @@
                 <nav>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::check())
-                        <li><a href="#">Users List</a></li>
+                        <li><a href="{{ route('users.index') }}">Users List</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ Auth::user()->name }} <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('users.show', Auth::user()->id) }}"> Personal Info.</a></li>
-                                <li><a href="#">Update Info.</a></li>
+                                <li><a href="{{ route('users.edit', Auth::user()->id) }}">Update Info.</a></li>
                                 <li class="divider"></li>
                                 <!-- User Logout -->
                                 <li>
