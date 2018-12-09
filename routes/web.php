@@ -20,6 +20,11 @@ Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
 Route::get('signup', 'UsersController@create')->name('signup');
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
+
+//第一个参数是路径，confirm是在signup路径后的，用的是控制器，confirmEmail的方法，叫confirm_email
+
+//渲染时找到confirm.blade.php就可以
 
 /* Users */
 
@@ -36,3 +41,9 @@ Route::resource('users', 'UsersController');
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+//在Login的Forgot Password链接处返回password/reset地址，通过路由器名字
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
