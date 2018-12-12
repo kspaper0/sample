@@ -126,4 +126,22 @@ class UsersController extends Controller
         session()->flash('success', 'Thanks for your joining');
         return redirect()->route('users.show', [$user]);
     }
+
+    public function followings(User $user)
+    {
+        $users = $user->followings()->paginate(30);
+
+        $title = "Followings";
+
+        return view('users.show_follow', compact('users', 'title'));
+
+    }
+
+    public function followers(User $user)
+    {
+        $users = $user->followers()->paginate(30);
+        $title = "Followers";
+
+        return view('users.show_follow', compact('users', 'title'));
+    }
 }

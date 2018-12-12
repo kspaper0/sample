@@ -13,6 +13,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('users.show', Auth::user()->id) }}"> Personal Info.</a></li>
                                 <li><a href="{{ route('users.edit', Auth::user()->id) }}">Update Info.</a></li>
+                                <li><a href="{{ route('users.followings', Auth::user()->id) }}">Followings</a></li>
                                 <li class="divider"></li>
                                 <!-- User Logout -->
                                 <li>
